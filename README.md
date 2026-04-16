@@ -13,7 +13,7 @@ git clone https://github.com/Jhuanca2023/PrestoMart-CRUD-Android.git
 3. Sincronizar Gradle para descargar las dependencias.
 4. Ejecutar en un emulador o dispositivo físico.
 
-## Estructura del Proyecto
+## Estructura del Proyecto (MVVM)
 
 ```text
 app/
@@ -51,8 +51,6 @@ app/
 
 ## Tarea de Investigación: Arquitectura y Conceptos Android
 
-PrestoMart está desarrollado utilizando el patrón de arquitectura **MVVM (Model-View-ViewModel)** junto con principios de **Clean Architecture**.
-
 ### Patrones de Arquitectura en Android
 
 *   **MVVM (Model-View-ViewModel):** Separa la lógica de datos de la interfaz. El ViewModel prepara la información para que la vista solo la muestre. Es el estándar actual de Android.
@@ -62,12 +60,12 @@ PrestoMart está desarrollado utilizando el patrón de arquitectura **MVVM (Mode
 
 ### Clean Architecture
 
-Estructura el proyecto en capas con responsabilidades únicas para facilitar el mantenimiento y escalabilidad:
+Es un modelo de diseño que divide el sistema en capas con responsabilidades únicas para facilitar el mantenimiento:
 
-*   **Application:** Contiene la lógica de la aplicación y los ViewModels.
-*   **Domain:** Define las reglas de negocio, entidades puras y casos de uso.
-*   **Presentation:** Encargada de la interfaz de usuario y componentes visuales (Compose).
-*   **Infrastructure:** Implementación técnica de base de datos (Room/SQLite) y servicios externos.
+*   **Application:** Lógica de la aplicación y ViewModels.
+*   **Domain:** Reglas de negocio, entidades puras y casos de uso.
+*   **Presentation:** Interfaz de usuario y componentes visuales.
+*   **Infrastructure:** Implementación de base de datos y servicios externos.
 
 ### Conceptos Fundamentales
 
