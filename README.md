@@ -1,88 +1,70 @@
 # PrestoMart-CRUD-Android
 
-PrestoMart es una aplicación Android moderna diseñada para la gestión eficiente de inventarios. Permite realizar operaciones CRUD sobre productos y categorías con una interfaz optimizada, utilizando tecnologías nativas de Android.
+PrestoMart es una herramienta diseñada para la gestión de inventarios en Android. Permite controlar productos y categorías con una interfaz limpia y funcional, utilizando tecnologías nativas.
 
-## Instalación y Configuración
+## Instalación
 
-1. Clonar el repositorio
+1. Clonar el repositorio:
 ```bash
 git clone https://github.com/Jhuanca2023/PrestoMart-CRUD-Android.git
 ```
 
-2. Abrir el proyecto
-- Abre **Android Studio** (versión Ladybug o superior).
-- Selecciona "Open" y busca la carpeta del proyecto.
+2. Abrir en Android Studio (Ladybug o superior).
+3. Sincronizar Gradle para descargar las dependencias.
+4. Ejecutar en un emulador o dispositivo físico.
 
-3. Sincronizar Gradle
-- Deja que Android Studio descargue las dependencias y sincronice el proyecto automáticamente.
-
-4. Ejecutar la aplicación
-- Conecta un dispositivo físico o inicia un emulador.
-- Presiona el botón "Run" (flecha verde) en Android Studio.
-
-## Arquitectura del Proyecto (Estructura de Carpetas)
+## Estructura del Proyecto
 
 ```text
 ├── 📁 app
 │   └── 📁 src
-│       └── � main
+│       └── 📁 main
 │           ├── 📁 java/com/example/crudprestomart
-│           │   ├── � data
-│           │   │   ├── � local (SQLite/Room DAOs y Database)
-│           │   │   ├── � model (Entidades de datos)
-│           │   │   └── � repository (Patrón Repositorio)
-│           │   ├── 📁 ui
-│           │   │   ├── 📁 components (Componentes reutilizables)
-│           │   │   ├── 📁 screens (Pantallas de la App)
-│           │   │   ├── 📁 theme (Configuración de colores y estilos)
-│           │   │   └── 📁 viewmodel (Lógica de negocio para la UI)
-│           │   └── � MainActivity.kt
-│           ├── 📁 res (Recursos: imágenes, textos, temas)
+│           │   ├── 📁 data (Base de datos y Repositorios)
+│           │   ├── 📁 ui (Pantallas, Componentes y Temas)
+│           │   ├── 📁 viewmodel (Lógica de la interfaz)
+│           │   └── 📄 MainActivity.kt
+│           ├── 📁 res (Imágenes, textos y estilos)
 │           └── 📄 AndroidManifest.xml
-├── ⚙️ build.gradle.kts (Scripts de construcción)
+├── ⚙️ build.gradle.kts (Configuración de dependencias)
 └── ⚙️ settings.gradle.kts
 ```
 
-## Pantallazos de la Aplicación
+## Pantallazos
 
-### Gestión de Productos
-| 1. Listado de Productos | 2. Crear Producto | 3. Detalle de Producto | 4. Eliminar Producto |
+### Productos
+| Listado | Crear | Detalle | Eliminar |
 | :---: | :---: | :---: | :---: |
 | ![Listar](./screenshots/prestomart-listar.png) | ![Crear](./screenshots/prestomart-crear.png) | ![Detalle](./screenshots/prestomart-detalle.png) | ![Eliminar](./screenshots/prestomart-eliminar.png) |
 
-### Gestión de Categorías
-| 5. Listado de Categorías | 6. Crear Categoría |
+### Categorías
+| Listado | Crear |
 | :---: | :---: |
 | ![Categorías Listar](./screenshots/prestomart-categoria-listar.png) | ![Categoría Crear](./screenshots/prestomart-categoria-crear.png) |
 
-## Tecnologías Utilizadas
-- **Lenguaje**: Kotlin
-- **UI**: Jetpack Compose (Material 3)
-- **Base de Datos Local**: SQLite (Room Persistence Library)
-- **Navegación**: Compose Navigation
-- **Carga de Imágenes**: Coil
+## Tecnologías
+- **Kotlin**: Lenguaje principal.
+- **Jetpack Compose**: Para la interfaz moderna.
+- **Room (SQLite)**: Base de datos local.
+- **Navigation Compose**: Flujo entre pantallas.
+- **Coil**: Carga de imágenes.
 
-## Teoría y Arquitectura Android
+## Tarea de Investigación: Arquitectura y Conceptos Android
 
-### Arquitectura MVVM (Model-View-ViewModel)
-Es un patrón de diseño que separa la lógica de la interfaz de usuario de la lógica de negocio:
-- **Model**: Representa los datos y la lógica de negocio (en este proyecto: `data/local` y `data/model`).
-- **View**: Interfaz de usuario que muestra los datos (en este proyecto: `ui/screens`).
-- **ViewModel**: Actúa como puente, preparando los datos del Model para la View (en este proyecto: `ui/viewmodel`).
+### Patrones de Arquitectura en Android
+
+*   **MVVM (Model-View-ViewModel):** Separa la lógica de datos de la interfaz. El ViewModel prepara la información para que la vista solo tenga que mostrarla. Es el estándar actual.
+*   **MVC (Model-View-Controller):** El controlador recibe los eventos de la vista y actualiza el modelo. Es el patrón más clásico pero menos usado hoy en Android.
+*   **MVP (Model-View-Presenter):** El presentador maneja la lógica y le dice a la vista exactamente qué mostrar. Facilita las pruebas unitarias.
+*   **MVI (Model-View-Intent):** Basado en un flujo de datos unidireccional. El usuario envía un "intento", el estado cambia y la vista se actualiza por completo.
 
 ### Clean Architecture
-Es una arquitectura que divide el proyecto en capas con responsabilidades únicas:
-- **Presentation**: UI y componentes visuales (Screens y ViewModels).
-- **Domain**: Reglas de negocio puras (Models y Repositorios).
-- **Infrastructure/Data**: Implementación técnica (Room Database, DAOs).
+Divide el sistema en capas (Presentación, Dominio, Datos) para que el código sea fácil de mantener y no dependa de librerías externas. La lógica de negocio siempre está en el centro.
 
-### Conceptos Clave en Android
-- **AndroidManifest.xml**: Es el archivo de configuración central. Declara las actividades de la app, los permisos necesarios (como acceso a fotos o internet) y la identidad del proyecto. Es indispensable para que Android reconozca la app.
-- **Gradle Scripts**: Sistema de construcción automatizado. Sirve para gestionar las librerías externas (dependencias), definir la versión de la app y configurar cómo se empaqueta el archivo final para el celular.
-- **Carpeta res**: Almacena todos los recursos visuales y estáticos:
-  - `drawable`: Imágenes y formas.
-  - `values`: Textos (strings), colores y estilos.
-  - `mipmap`: Iconos de la aplicación para diferentes tamaños de pantalla.
+### Conceptos Fundamentales
+*   **AndroidManifest.xml:** Es el archivo central donde se registra todo lo que tiene la app: sus pantallas, los permisos que pide y su nombre oficial.
+*   **Gradle Scripts:** Se encarga de armar el proyecto, descargar las librerías necesarias y configurar la compilación.
+*   **Carpeta res:** Contiene todo lo visual: fotos (drawables), textos traducibles (strings) y colores del sistema.
 
 ---
-Tareas que me dejaron sobre arquitecturas para el desarrollo móvil Android.
+Cualquier duda o sugerencia sobre estas u otras arquitecturas, escribir a **josehuanca612@gmail.com**. Todo feedback es bienvenido para seguir mejorando.
