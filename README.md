@@ -1,6 +1,6 @@
 # PrestoMart-CRUD-Android
 
-PrestoMart es una herramienta diseñada para la gestión de inventarios en Android. Permite controlar productos y categorías con una interfaz limpia y funcional, utilizando tecnologías nativas.
+PrestoMart es un CRUD sencillo que permite controlar productos y categorías con una interfaz intuitiva y funcional, utilizando tecnología nativa.
 
 ## Instalación
 
