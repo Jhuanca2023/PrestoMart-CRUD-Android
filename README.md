@@ -16,18 +16,18 @@ git clone https://github.com/Jhuanca2023/PrestoMart-CRUD-Android.git
 ## Estructura del Proyecto
 
 ```text
-├── 📁 app
-│   └── 📁 src
-│       └── 📁 main
-│           ├── 📁 java/com/example/crudprestomart
-│           │   ├── 📁 data (Base de datos y Repositorios)
-│           │   ├── 📁 ui (Pantallas, Componentes y Temas)
-│           │   ├── 📁 viewmodel (Lógica de la interfaz)
-│           │   └── 📄 MainActivity.kt
-│           ├── 📁 res (Imágenes, textos y estilos)
-│           └── 📄 AndroidManifest.xml
-├── ⚙️ build.gradle.kts (Configuración de dependencias)
-└── ⚙️ settings.gradle.kts
+app/
+├── src/
+│   └── main/
+│       ├── java/com/example/crudprestomart/
+│       │   ├── data/                 # Base de datos (Room), Entidades y Repositorios
+│       │   ├── ui/                   # Interfaz de usuario (Screens, Components, Theme)
+│       │   ├── viewmodel/            # Lógica de negocio y estado de la UI
+│       │   └── MainActivity.kt       # Punto de entrada de la aplicación
+│       ├── res/                      # Recursos (Imágenes, Textos, Estilos)
+│       └── AndroidManifest.xml       # Configuración principal de Android
+├── build.gradle.kts                  # Configuración de dependencias
+└── settings.gradle.kts                # Configuración de módulos
 ```
 
 ## Pantallazos
@@ -51,20 +51,29 @@ git clone https://github.com/Jhuanca2023/PrestoMart-CRUD-Android.git
 
 ## Tarea de Investigación: Arquitectura y Conceptos Android
 
+PrestoMart está desarrollado utilizando el patrón de arquitectura **MVVM (Model-View-ViewModel)** junto con principios de **Clean Architecture**.
+
 ### Patrones de Arquitectura en Android
 
-*   **MVVM (Model-View-ViewModel):** Separa la lógica de datos de la interfaz. El ViewModel prepara la información para que la vista solo tenga que mostrarla. Es el estándar actual.
-*   **MVC (Model-View-Controller):** El controlador recibe los eventos de la vista y actualiza el modelo. Es el patrón más clásico pero menos usado hoy en Android.
-*   **MVP (Model-View-Presenter):** El presentador maneja la lógica y le dice a la vista exactamente qué mostrar. Facilita las pruebas unitarias.
-*   **MVI (Model-View-Intent):** Basado en un flujo de datos unidireccional. El usuario envía un "intento", el estado cambia y la vista se actualiza por completo.
+*   **MVVM (Model-View-ViewModel):** Separa la lógica de datos de la interfaz. El ViewModel prepara la información para que la vista solo la muestre. Es el estándar actual de Android.
+*   **MVC (Model-View-Controller):** El controlador recibe eventos de la vista y actualiza el modelo. Es el patrón clásico pero poco flexible para interfaces complejas.
+*   **MVP (Model-View-Presenter):** El presentador maneja la lógica y ordena a la vista qué mostrar exactamente. Mejora la capacidad de realizar pruebas.
+*   **MVI (Model-View-Intent):** Basado en flujo unidireccional. El usuario envía un intento, el estado cambia y la vista se actualiza totalmente.
 
 ### Clean Architecture
-Divide el sistema en capas (Presentación, Dominio, Datos) para que el código sea fácil de mantener y no dependa de librerías externas. La lógica de negocio siempre está en el centro.
+
+Estructura el proyecto en capas con responsabilidades únicas para facilitar el mantenimiento y escalabilidad:
+
+*   **Application:** Contiene la lógica de la aplicación y los ViewModels.
+*   **Domain:** Define las reglas de negocio, entidades puras y casos de uso.
+*   **Presentation:** Encargada de la interfaz de usuario y componentes visuales (Compose).
+*   **Infrastructure:** Implementación técnica de base de datos (Room/SQLite) y servicios externos.
 
 ### Conceptos Fundamentales
-*   **AndroidManifest.xml:** Es el archivo central donde se registra todo lo que tiene la app: sus pantallas, los permisos que pide y su nombre oficial.
-*   **Gradle Scripts:** Se encarga de armar el proyecto, descargar las librerías necesarias y configurar la compilación.
-*   **Carpeta res:** Contiene todo lo visual: fotos (drawables), textos traducibles (strings) y colores del sistema.
+
+*   **AndroidManifest.xml:** Archivo central de configuración donde se registran pantallas, permisos y la identidad de la aplicación.
+*   **Gradle Scripts:** Gestiona la construcción del proyecto, dependencias de librerías y configuración de compilación.
+*   **Carpeta res:** Almacena recursos estáticos como imágenes (drawables), textos (strings) y colores del sistema.
 
 ---
-Cualquier duda o sugerencia sobre estas u otras arquitecturas, escribir a **josehuanca612@gmail.com**. Todo feedback es bienvenido para seguir mejorando.
+Dudas o sugerencias sobre arquitecturas de desarrollo móvil, escribir a **josehuanca612@gmail.com**. Todo feedback es bienvenido para seguir mejorando.
